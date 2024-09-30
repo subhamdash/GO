@@ -1,0 +1,21 @@
+go mod init example/Go  - To create go.mod file
+go run hello.go - This command do infact compile the code into binary , 
+                  it creates(in temp directrory ) build then executes and then delte the binary after the program finishes.
+
+
+go build hello.go - creates an exe files then saves
+
+go build -o hello_world hello.go - TO use a different name for the build
+
+Go developers never put a semicolon at the end of every statement,Go copiler does it 
+
+While go gmt ensures the code is fomatted correctly.
+
+Go assigns zero as default value to any variable that is assigned to it.
+
+
+Any time
+your logic depends on values that are configured at startup or changed while your
+program is running, those values should be stored in a struct and that logic should be
+implemented as a method. If your logic only depends on the input parameters, then it
+should be a function.

@@ -1,0 +1,17 @@
+The ususal case of clousure will occur in the go routine as well .
+You better use shadowing or pass the value as a parameter.
+
+
+Whenever you launch a goroutine function, you must make sure that it will eventually exit. 
+Unlike variables, the Go runtime can’t detect that a goroutine will never be used again. 
+If a goroutine doesn’t exit, the scheduler will still periodically give it time to do nothing, which slows down your program. 
+This is called a goroutine leak.
+
+
+Buffered channels are useful when you know how many goroutines you have
+launched, want to limit the number of goroutines you will launch, or want to limit the
+amount of work that is queued up.
+Buffered channels work great when you want to either gather data back from a set of
+goroutines that you have launched or when you want to limit concurrent usage. They
+are also helpful for managing the amount of work a system has queued up, preventing
+your services from falling behind and becoming overwhelmed.

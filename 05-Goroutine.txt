@@ -1,0 +1,22 @@
+Goroutines are lightweight processes managed by the Go runtime. When a Go pro‐gram starts, 
+the Go runtime creates a number of threads and launches a single goroutine to run your program. 
+All of the goroutines created by your program, including the initial one, are assigned to these threads automatically by the Go run‐
+time scheduler, just as the operating system schedules threads across CPU cores. 
+This might seem like extra work, since the underlying operating system already includes a scheduler that manages threads and processes, 
+but it has several benefits:
+• Goroutine creation is faster than thread creation, because you aren’t creating an operating system–level resource.
+• Goroutine initial stack sizes are smaller than thread stack sizes and can grow as needed. This makes goroutines more memory efficient.
+• Switching between goroutines is faster than switching between threads because it happens entirely within the process, avoiding operating system calls that are (rel‐
+atively) slow.
+• The scheduler is able to optimize its decisions because it is part of the Go process.
+The scheduler works with the network poller, detecting when a goroutine can be unscheduled because it is blocking on I/O. 
+It also integrates with the garbage collector, making sure that work is properly balanced across all of the operating system threads assigned to your Go process.
+These advantages allow Go programs to spawn hundreds, thousands, even tens of thousands of simultaneous goroutines. 
+If you try to launch thousands of threads in a language with native threading, your program will slow to a crawl.
+
+
+
+A goroutine is launched by placing the go keyword before a function invocation. 
+Just like any other function, you can pass it parameters to initialize its state. 
+However, any values returned by the function are ignored.
+

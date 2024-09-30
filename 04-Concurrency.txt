@@ -1,0 +1,37 @@
+//More concurrency doesn't means more speed.
+
+In simpler terms, Amdahl's Law tells us that if we have a program or task that can be split into parallel parts and some parts that cannot,
+ then no matter how many processors or resources we add to the parallelizable parts, 
+ the overall speedup will be limited by the portion of the task that remains sequential or cannot be parallelized.
+
+
+ For example, if 80% of a task can be parallelized and 20% cannot, even if we had an infinite number of processors for the parallel part,
+  the maximum speedup we could achieve would be limited by that 20% that's sequential. 
+ This means that adding more processors beyond a certain point won't make the task significantly faster.
+
+In practical terms, Amdahl's Law reminds us to focus on optimizing both the parallelizable and sequential parts of a task to achieve 
+the best overall performance improvements. It also helps in making informed decisions about how much effort to invest in parallelizing a 
+task relative to its potential speedup.
+
+
+Here's a breakdown of the program's execution time:
+
+Processing part (parallelizable): 80% of total time
+Loading/saving part (sequential): 20% of total time
+Now, let's apply Amdahl's Law to see how adding more processors affects the overall speedup of the program.
+
+Single Processor Case:
+
+In this scenario, the program runs sequentially with one processor.
+Total execution time = Processing time + Loading/saving time = 80% + 20% = 100%
+Multiple Processor Case:
+
+Let's say we can parallelize the processing part perfectly with multiple processors.
+Even if we add infinite processors for the parallelizable part, the sequential part still takes the same amount of time.
+Let's say we add 10 processors for the parallelizable part. Since 80% of the total time is spent on processing, theoretically, the processing time would reduce to 10% of the original time.
+Total execution time = Processing time + Loading/saving time = 10% + 20% = 30%
+Now, let's calculate the speedup:
+
+Speedup = Sequential execution time / Parallel execution time
+Speedup = 100% / 30% ≈ 3.33x
+So, even though we added 10 processors for the parallelizable part, the maximum speedup we could achieve was approximately 3.33 times faster due to the 20% of the task that couldn't be parallelized. This demonstrates the limitation imposed by Amdahl's Law.

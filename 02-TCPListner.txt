@@ -1,0 +1,13 @@
+A TCp listener is a prrogarma that listens to incoming TCP connection on a specific network port.
+When TCP listener is active , it continuoulsy check for incoming request on the specific port.
+When a coonection request is received, the listener typically accepts connection and establishes a communication channel with client .
+
+
+Used in server application that need to communicate with client over TCp/IP networks. Eg:- Web servers, chat servers.
+
+Once a connection is established, data can be exchanged using TCp protocol.
+
+TCp listener continues to listen for new connection request, allowing server to handle multiple clients concurrently.
+
+In summary, a TCP listener acts as the entry point for incoming TCP connections, 
+enabling communication between clients and servers over TCP/IP networks.

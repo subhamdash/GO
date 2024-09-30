@@ -1,0 +1,53 @@
+In Go, both functions and methods are blocks of code that perform a specific task, but they differ in their invocation and association with data types.
+
+Functions:
+
+Functions in Go are standalone blocks of code that can be defined and invoked independently.
+They are declared using the func keyword followed by the function name, parameters (if any), return type (if any), and the function body.
+Functions can be invoked from anywhere in the package where they are defined, or even from other packages if they are exported (i.e., their names start with an uppercase letter).
+Example:
+
+/////////////////////////////
+package main
+
+import "fmt"
+
+func add(a, b int) int {
+    return a + b
+}
+
+func main() {
+    result := add(3, 5)
+    fmt.Println("Sum:", result)
+}
+/////////////////////////////
+
+
+Methods:
+
+Methods are functions that are associated with a particular type, known as the receiver type.
+They are declared similarly to functions, but with an additional receiver parameter specified before the function name.
+Methods are invoked on instances of the receiver type using dot notation.
+They enable defining behavior specific to a type and encapsulating data along with operations.
+Methods can be defined for any user-defined type, including structs, arrays, slices, and even built-in types like integers or strings.
+
+
+////////////////////////
+package main
+
+import "fmt"
+
+type Rectangle struct {
+    width, height int
+}
+
+// Method with a receiver of type Rectangle
+func (r Rectangle) area() int {
+    return r.width * r.height
+}
+
+func main() {
+    rect := Rectangle{width: 5, height: 3}
+    fmt.Println("Area:", rect.area())
+}
+
